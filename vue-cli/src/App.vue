@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <my-bar></my-bar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Bar from './components/shared/bar/Bar.vue';
+
 export default {
   name: 'app',
+  components: {
+    'my-bar' : Bar,
+  },
   data () {
     return {
     }
@@ -21,7 +27,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 h1, h2 {
