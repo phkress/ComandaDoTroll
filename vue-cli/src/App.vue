@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <my-bar></my-bar>
+    <my-bar titulo="Comanda do Troll" :menu="routes" ></my-bar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Bar from './components/shared/bar/Bar.vue';
-
+import { routes } from './routes';
 export default {
   name: 'app',
   components: {
@@ -15,6 +15,7 @@ export default {
   },
   data () {
     return {
+      routes : routes.filter(route => route.menu)
     }
   }
 }
