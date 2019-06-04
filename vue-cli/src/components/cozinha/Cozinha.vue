@@ -1,15 +1,14 @@
 <template>
-  <div id="home">
-
-  </div>
+    
 </template>
 <script>
 export default {
-    name: "Home",
+    name: "Cozinha",
     data: () => ({
 
     }),
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
+
 </style>
