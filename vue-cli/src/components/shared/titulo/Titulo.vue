@@ -7,15 +7,19 @@
                      <h1>{{titulo}}</h1>
                 </b-col>
                 <b-col>
-                    RELOGIO
+                    <clock></clock>                 
                 </b-col>
             </b-row>
         </b-container>   
     </div>
 </template>
 <script>
+import Relogio from '../relogio/Relogio.vue'
 export default {
     name: "Titulo",
+    components:{
+        'clock' : Relogio,
+    },
     props:{
         titulo:{
             required: true,
