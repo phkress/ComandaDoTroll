@@ -1,6 +1,6 @@
 <template>
     <div id="Relogio">
-        <p v-text="tempoAtual"></p>
+        <p>{{tempoAtual}}</p>
     </div>
 </template>
 <script>
@@ -12,15 +12,15 @@ export default {
         return {
             tempoAtual: null        
         }
+    },
+    created() {
+        this.tempoAtual = moment().format('LTS');
+        setInterval(() => this.updateTempoAtual(), 1 * 1000);
     }, 
     methods: {
         updateTempoAtual() {
         this.tempoAtual = moment().format('LTS');
         }
-    },
-    created() {
-        this.tempoAtual = moment().format('LTS');
-        setInterval(() => this.updateTempoAtual(), 1 * 1000);
     }
 }
 </script>
