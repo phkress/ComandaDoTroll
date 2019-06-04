@@ -8,8 +8,8 @@ import Titulo from '../shared/titulo/Titulo.vue';
 export default {
     name: "Cozinha",
     components: {
-    'my-titulo' : Titulo,
-  },
+        'my-titulo' : Titulo,
+    },
     data: () => ({
 
     }),
