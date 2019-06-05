@@ -9,7 +9,7 @@
         >
             <blockquote class="blockquote mb-0">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <info infoColor="teste"></info>
+                <info></info>
             </blockquote>
         </b-card>
     </div>
@@ -23,16 +23,12 @@ export default {
             required: true,
             type: String
         },
-        cardTitleColor:{
-            required: true,
-            type: String
-        }
     },
     components:{
         'info': SubInfo,
     },
     data: () => ({
-
+        cardTitleColor: 'success'
     }),
 }
 </script>

@@ -2,7 +2,7 @@
     <b-row>        
         <b-card :bg-variant="infoBg" :text-variant="infoTextColor">
             <b-row>
-                <b-col>1</b-col>                 
+                <b-col @click="change()">1</b-col>                 
                 <b-col>2</b-col>
                 <div class="w-100"></div>
                 <b-col>3</b-col>                 
@@ -15,15 +15,17 @@
 export default {
     name: "SubInfo",
     props:{
-        infoBg:{
-            required: true,
-            type: String,
-            default: 'success'
-        }
     },
     data: () => ({
-        infoTextColor: 'white',        
-    })
+        infoTextColor: 'white',
+        infoBg: 'success',
+          
+    }),
+    created() {
+    },
+    methods:{
+        
+    }
 }
 </script>
 <style scoped>

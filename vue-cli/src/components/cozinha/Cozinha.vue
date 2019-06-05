@@ -7,7 +7,6 @@
                     <b-card-group class="ml-2" deck>               
                         <cozinha-card v-for="index in 20" :key="index"
                             cardTitle="Local de origem do Pedido"
-                            cardTitleColor="success"
                         ></cozinha-card>
                     </b-card-group>
                 </b-col>
