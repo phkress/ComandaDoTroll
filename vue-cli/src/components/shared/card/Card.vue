@@ -3,14 +3,14 @@
         <b-card 
             :header="cardTitle" 
             header-text-variant="white"            
-            :border-variant="cardTitleColor"
-            :header-border-variant="cardTitleColor"
-            :header-bg-variant="cardTitleColor"
-        >
-            <blockquote class="blockquote mb-0">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <info></info>
-            </blockquote>
+            :border-variant="cardColor"
+            :header-border-variant="cardColor"
+            :header-bg-variant="cardColor">
+            <b-card-text>
+                This is a wider card with supporting text as a natural lead-in to additional content.
+                This content is a little bit longer.
+            </b-card-text>
+            <info></info>
         </b-card>
     </div>
 </template>
@@ -28,7 +28,8 @@ export default {
         'info': SubInfo,
     },
     data: () => ({
-        cardTitleColor: 'success'
+        cardTitleColor: 'success',
+        cardColor: 'dark'
     }),
 }
 </script>
