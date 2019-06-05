@@ -17,10 +17,10 @@
 </template>
 <script>
 export default {
-  name: "home",
-  data: () => ({
+    name: "Home",
+    data: () => ({
 
-  })
+    }),
 }
 </script>
 <style lang="scss" scoped>
