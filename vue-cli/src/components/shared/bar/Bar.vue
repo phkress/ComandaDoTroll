@@ -8,15 +8,17 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item v-for="rota in menu" v-bind:key="rota.titulo" :to="rota.path ? rota.path : '/'">              
+            <b-nav-item v-for="rota in menu" v-bind:key="rota.titulo" :to="rota.path ? rota.path : '/'">
                 {{rota.titulo}}
-                <b-badge pill variant="danger">2</b-badge>              
+                <b-badge pill variant="danger">2</b-badge>
             </b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-
+            <b-nav-text>
+              <clock></clock>
+            </b-nav-text>
             <b-nav-item-dropdown right>
               <!-- Using 'button-content' slot -->
               <template slot="button-content"><em>User</em></template>
@@ -30,6 +32,7 @@
   </div>
 </template>
 <script>
+import Relogio from '../relogio/Relogio.vue'
 export default {
   name: "BarraDeMenu",
   props: {
@@ -41,6 +44,9 @@ export default {
       required: true,
       type: Array
     }
+  },
+  components:{
+      'clock' : Relogio,
   },
   data: () => ({
 

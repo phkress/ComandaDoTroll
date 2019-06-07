@@ -10,13 +10,13 @@ export default {
     name: "Relogio",
     data(){
         return {
-            tempoAtual: null        
+            tempoAtual: null
         }
     },
     created() {
         this.tempoAtual = moment().format('LTS');
         setInterval(() => this.updateTempoAtual(), 1 * 1000);
-    }, 
+    },
     methods: {
         updateTempoAtual() {
         this.tempoAtual = moment().format('LTS');
@@ -25,5 +25,10 @@ export default {
 }
 </script>
 <style scoped>
-
+  #Relogio{
+    margin:-20px 0px -40px 0px;
+  }
+  p{
+    font-size:30pt;
+  }
 </style>

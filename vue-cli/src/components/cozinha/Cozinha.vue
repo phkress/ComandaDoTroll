@@ -1,10 +1,10 @@
 <template>
     <div id="Cozinha">
-        <my-titulo titulo="Pedidos"></my-titulo>        
+        <!--<my-titulo titulo="Pedidos"></my-titulo>        -->
         <b-container fluid>
            <b-row>
                <b-col cols="12" class="mx-auto">
-                    <b-card-group class="ml-2" deck>               
+                    <b-card-group class="ml-2" deck>
                         <cozinha-card v-for="index in 20" :key="index"
                             cardTitle="Local de origem do Pedido"
                         ></cozinha-card>
@@ -21,7 +21,7 @@ export default {
     name: "Cozinha",
     components: {
         'my-titulo' : Titulo,
-        'cozinha-card': Card
+        'cozinha-card': Card,
     },
     data: () => ({
 
