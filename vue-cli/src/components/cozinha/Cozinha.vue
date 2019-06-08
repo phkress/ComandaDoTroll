@@ -5,7 +5,7 @@
            <b-row>
                <b-col cols="12" class="mx-auto">
                     <b-card-group class="ml-2" deck>
-                        <cozinha-card v-for="index in 20" :key="index"
+                        <cozinha-card v-for="index in 6" :key="index"
                             cardTitle="Local de origem do Pedido"
                         ></cozinha-card>
                     </b-card-group>
@@ -29,5 +29,12 @@ export default {
 }
 </script>
 <style scoped>
-
+/*.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}*/
 </style>

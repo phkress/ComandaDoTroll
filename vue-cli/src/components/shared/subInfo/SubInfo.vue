@@ -1,13 +1,13 @@
 <template>
-    <b-row>        
+    <b-row>
         <b-card :bg-variant="infoBg" :text-variant="infoTextColor">
             <b-row>
-                <b-col>MESA:01</b-col>                 
+                <b-col>MESA:01</b-col>
                 <b-col>TIME:</b-col>
                 <div class="w-100"></div>
-                <b-col>#0000</b-col>                 
+                <b-col>#0000</b-col>
                 <b-col></b-col>
-             </b-row> 
+             </b-row>
         </b-card>
     </b-row>
 </template>
@@ -20,13 +20,13 @@ export default {
     data: () => ({
         infoTextColor: 'white',
         infoBg: 'success',
-        tempoDePreparo: null         
+        tempoDePreparo: null
     }),
     created() {
-                
+
     },
     methods:{
-        
+
     }
 }
 </script>
