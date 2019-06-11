@@ -6,7 +6,7 @@ export default {
     name: "Mesa",
     data: () => ({
 
-    }),    
+    }),
 }
 </script>
 <style scoped>
