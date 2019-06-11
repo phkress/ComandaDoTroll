@@ -23,6 +23,7 @@
               <!-- Using 'button-content' slot -->
               <template slot="button-content"><em>User</em></template>
               <b-dropdown-item href="#" disabled>Profile</b-dropdown-item>
+              <b-dropdown-item :to="'/configuracao'" >Configuração</b-dropdown-item>
               <b-dropdown-item href="#" disabled>Sign Out</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
