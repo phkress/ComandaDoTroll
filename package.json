@@ -16,5 +16,7 @@
   "bugs": {
     "url": "https://github.com/phkress/ComandaDoTroll/issues"
   },
-  "homepage": "https://github.com/phkress/ComandaDoTroll#readme"
+  "homepage": "https://github.com/phkress/ComandaDoTroll#readme",
+  "dependencies": {
+  }
 }
