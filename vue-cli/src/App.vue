@@ -47,4 +47,10 @@ li {
 a {
   color: #42b983;
 }
+.tleft{
+  text-align: left;
+}
+.tright{
+  text-align: right;
+}
 </style>
