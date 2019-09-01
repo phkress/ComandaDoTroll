@@ -33,14 +33,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.teste{
-  background-color: red;
-  width: 100%;
-}
-.blue{
-  background-color: blue;
-  text-align: right;
-}
 .borda{
   border:thin solid black;
   border-top: none;
