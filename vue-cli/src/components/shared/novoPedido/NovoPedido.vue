@@ -1,27 +1,33 @@
 <template>
   <div id="novoPedido">
-    <br>
-      <b-row>
+      <div >
         <b-card-group deck>
-          <b-col cols="12" md="3">
-           <b-card  bg-variant="success" text-variant="white" class="text-center custom-card-body cardCustom">
-             <b-card-text><p>Sanduíches</p></b-card-text>
-            </b-card>
-          </b-col><b-col cols="12" md="3">
-           <b-card bg-variant="primary" text-variant="white" class="text-center custom-card-body cardCustom">
-            <b-card-text><p>Aperitivos</p></b-card-text>
-           </b-card>
-         </b-col ><b-col cols="12" md="3">
-           <b-card bg-variant="danger" text-variant="white" class="text-center custom-card-body cardCustom">
-            <b-card-text><p>Sobremesas</p></b-card-text>
-           </b-card>
-         </b-col ><b-col cols="12" md="3">
-           <b-card bg-variant="warning" text-variant="white" class="text-center custom-card-body cardCustom">
-            <b-card-text><p>Bebidas</p></b-card-text>
-           </b-card>
-          </b-col >
+            <b-col col lg="6" class="mt-3">
+          <b-card bg-variant="success" text-variant="white" header="" class="text-center">
+            <b-card-text>Sanduíches</b-card-text>
+          </b-card>
+        </b-col>
+        <b-col col lg="6" class="mt-3">
+          <b-card bg-variant="primary" text-variant="white" header="" class="text-center">
+            <b-card-text>Aperitivos</b-card-text>
+          </b-card>
+        </b-col>
         </b-card-group>
-      </b-row>
+      </div>
+      <div >
+        <b-card-group deck>
+            <b-col col lg="6" class="mt-3">
+          <b-card bg-variant="danger" text-variant="white" header="" class="text-center">
+            <b-card-text>Sobremesas</b-card-text>
+          </b-card>
+        </b-col>
+        <b-col col lg="6" class="mt-3">
+          <b-card bg-variant="warning" text-variant="white" header="" class="text-center">
+            <b-card-text>Bebidas</b-card-text>
+          </b-card>
+        </b-col>
+        </b-card-group>
+      </div>
   </div>
 </template>
 <script>
