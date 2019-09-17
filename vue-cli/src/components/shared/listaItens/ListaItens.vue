@@ -1,10 +1,10 @@
-<template>
+servic<template>
   <div id="listaMesas">
     <b-row>
      <b-col cols="12" class="mx-auto">
-         <div class="mesaLista borda" v-for="(iten,index) in itens" v-on:click="comunicaIten(_id, nome)">
+         <div class="mesaLista borda" v-for="(itenLista,index) in itens" v-on:click="comunicaIten(index, itenLista)">
                <span class="float-left">
-                 Item: {{iten.nome}}
+                 Item: {{itenLista.nome}}
                </span>
          </div>
      </b-col>
@@ -23,8 +23,8 @@ export default {
 
   }),
   methods: {
-    comunicaIten(_id, nomex) {
-      this.$emit("itenSelecionado",  {_id, nome} );
+    comunicaIten(index, itenLista) {
+      this.$emit("itenSelecionado",  {index, itenLista} );
     },
   }
 }
