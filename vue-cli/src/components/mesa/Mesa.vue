@@ -46,7 +46,10 @@ export default {
     },
     data: () => ({
       mesas: [{numeroDaMesa:1,pendentes:0,pedidos:1},{numeroDaMesa:2,pendentes:2,pedidos:2},{numeroDaMesa:3,pendentes:1,pedidos:1}],
-      itens: [{nome:'comida A'},{nome:'Comida B',categoria:'sanduiche',combo:'28,00',individual:'12,00'}],
+      itens: [
+        {nome:'comida A',categoria:'sanduiche',combo:'28,00',individual:'12,00'},
+        {nome:'Comida B',categoria:'sanduiche',combo:'27,00',individual:'11,00'},
+        {nome:'Comida C',categoria:'sobremesas',combo:'29,00',individual:'15,50'}],
       categoria: "",
       listaDeMesas: true,
       contadorDePedido: false,

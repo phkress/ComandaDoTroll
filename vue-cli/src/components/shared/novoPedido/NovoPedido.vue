@@ -63,6 +63,6 @@ export default {
 }
 .card-body p{
   margin-top: 10px;
-  font-size: 36pt;
+  font-size: 34pt;
 }
 </style>
