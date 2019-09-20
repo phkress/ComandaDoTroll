@@ -24,6 +24,16 @@ module.exports = function(app){
         res.sendStatus(500);
       });
   }
+  api.listaCategoria = (req, res)=>{
+    model.find({
+      categoria: req.params.id
+    }).then(function(lanche){
+      res.json(lanche)
+    }, function(error){
+      console.log(error);
+      res.sendStatus(500);
+    });
+  }
 
   return api;
 };
