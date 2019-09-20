@@ -35,6 +35,7 @@ import ContadorDePedidos from '../shared/contadorDePedidos/ContadorDePedidos.vue
 import NovoPedido from '../shared/novoPedido/NovoPedido.vue';
 import ListaItens from '../shared/listaItens/ListaItens.vue';
 import DetalhesItens from '../shared/detalhesItens/DetalhesItens.vue';
+import LancheService from '../../domain/lanche/LancheService'
 export default {
     name: "Mesa",
     components:{
@@ -46,11 +47,7 @@ export default {
     },
     data: () => ({
       mesas: [{numeroDaMesa:1,pendentes:0,pedidos:1},{numeroDaMesa:2,pendentes:2,pedidos:2},{numeroDaMesa:3,pendentes:1,pedidos:1}],
-      itens: [
-        {nome:'comida A',categoria:'sanduiche',combo:'28,00',individual:'12,00'},
-        {nome:'Comida B',categoria:'sanduiche',combo:'27,00',individual:'11,00'},
-        {nome:'Comida C',categoria:'sobremesas',combo:'29,00',individual:'15,50'}],
-      categoria: "",
+      itens: [],
       listaDeMesas: true,
       contadorDePedido: false,
       novoPedido: false,
@@ -77,7 +74,7 @@ export default {
         this.novoPedido = true;
       },
       mostrarListaItens(data){
-        this.categoria = data;
+        this.getListaCategoria(data)
         this.novoPedido = false;
         this.listaItens = true;
       },
@@ -85,8 +82,20 @@ export default {
         this.listaItens = false;
         this.detalhesItens = true;
         this.inMemoryIten = data.itenLista;
+      },
+      getListaCategoria(categoria){
+        this.serviceLanche
+            .listaCategoria(categoria)
+            .then(itens => {
+              this.itens = itens;
+            }, err => {
+              console.log(err);
+            });
       }
-    }
+    },
+  created() {
+    this.serviceLanche = new LancheService(this.$resource);
+  }
 }
 </script>
 <style scoped>
