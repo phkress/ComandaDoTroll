@@ -11,5 +11,5 @@ module.exports = function(app) {
 		// .delete(api.removePorId)
 		// .put(api.atualiza);
 	app.route('/v1/lanche/categoria/:id')
-	.get(api.listaCategoria)
+		.get(api.listaCategoria)
 };
