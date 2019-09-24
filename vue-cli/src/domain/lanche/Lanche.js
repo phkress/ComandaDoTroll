@@ -1,4 +1,3 @@
-
 export default class Lanche {
     constructor(nome="",categoria="",combo="",individual="") {
       this.nome = nome;

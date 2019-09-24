@@ -40,7 +40,6 @@ export default {
   methods: {
     pedir(tipo, itenEscolido) {
       let itenSelecionado = {}
-      itenSelecionado["_id"] = itenEscolido._id;
       itenSelecionado["nome"] = itenEscolido.nome;
       itenSelecionado["tipo"] =  tipo;
       if(tipo=="combo"){        

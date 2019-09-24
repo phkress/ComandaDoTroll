@@ -14,8 +14,6 @@ module.exports = function(app){
     });
   },
   api.adiciona = (req,res)=>{
-    console.log(req.body);
-    
     model.create(req.body)
       .then(function(lanche){
         res.json(lanche);
