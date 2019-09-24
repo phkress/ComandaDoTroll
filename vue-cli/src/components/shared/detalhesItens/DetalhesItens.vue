@@ -14,13 +14,13 @@
       <b-row>
         <b-col cols="12" sm="6" lg="2" class="pb-2">
           <p>Combo R$: {{itenEscolido.combo}}</p>
-          <b-button variant="success" @click="pedir('Combo', itenEscolido)">Pedir</b-button>
+          <b-button variant="success" @click="pedir('combo', itenEscolido)">Pedir</b-button>
         </b-col>
         </b-row>
         <b-row>
         <b-col cols="12" sm="6" lg="2" class="pb-2 mt-2">
             <p>Individual R$: {{itenEscolido.individual}}</p>
-          <b-button variant="success" @click="pedir('Individual', itenEscolido)">Pedir</b-button>
+          <b-button variant="success" @click="pedir('individual', itenEscolido)">Pedir</b-button>
         </b-col>
       </b-row>
     </div>
@@ -39,9 +39,16 @@ export default {
   }),
   methods: {
     pedir(tipo, itenEscolido) {
-      if('Combo'){
-        console.log(itenEscolido);
+      let itenSelecionado = {}
+      itenSelecionado["_id"] = itenEscolido._id;
+      itenSelecionado["nome"] = itenEscolido.nome;
+      itenSelecionado["tipo"] =  tipo;
+      if(tipo=="combo"){        
+        itenSelecionado["valor"] = itenEscolido.combo;
+      }else{
+        itenSelecionado["valor"] = itenEscolido.individual;
       }
+      this.$emit("iEscolido",  itenSelecionado );
     }
 
   }
