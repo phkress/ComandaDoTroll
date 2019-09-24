@@ -24,8 +24,18 @@
       ></lista-itens>
       <detalhes-itens
         :itenEscolido="inMemoryIten"
+        @iEscolido="itemSelecionado"
         v-show="detalhesItens"
       ></detalhes-itens>
+      <lista-pedidos
+        :infoDaMesa='inMemory'
+        :listaDePedido='listaDePedido'
+        @cancelaContadorDePedido='cancelaContadorDePedido'
+        @novoContadorDePedido='novoContadorDePedido'
+        @removerListaPedidos='removerListaPedidos'
+        v-show="showListaPeidos"
+      >        
+      </lista-pedidos>
       </b-container>
   </div>
 </template>
@@ -36,6 +46,7 @@ import NovoPedido from '../shared/novoPedido/NovoPedido.vue';
 import ListaItens from '../shared/listaItens/ListaItens.vue';
 import DetalhesItens from '../shared/detalhesItens/DetalhesItens.vue';
 import LancheService from '../../domain/lanche/LancheService'
+import ListaPedidos from '../shared/listaPedidos/ListaPedidos.vue';
 export default {
     name: "Mesa",
     components:{
@@ -43,7 +54,8 @@ export default {
       "contador-de-pedidos" : ContadorDePedidos,
       "novo-pedido" : NovoPedido,
       "lista-itens": ListaItens,
-      "detalhes-itens": DetalhesItens
+      "detalhes-itens": DetalhesItens,
+      "lista-pedidos": ListaPedidos
     },
     data: () => ({
       mesas: [{numeroDaMesa:1,pendentes:0,pedidos:1},{numeroDaMesa:2,pendentes:2,pedidos:2},{numeroDaMesa:3,pendentes:1,pedidos:1}],
@@ -53,8 +65,10 @@ export default {
       novoPedido: false,
       listaItens: false,
       detalhesItens: false,
+      showListaPeidos: false,
       inMemory: {mesa:{numeroDaMesa:0,pendentes:0,pedidos:0}},
-      inMemoryIten:{}
+      inMemoryIten:{},
+      listaDePedido:[]
     }),
     methods: {
       choseMesa(data) {
@@ -64,14 +78,17 @@ export default {
       },
       cancelaContadorDePedido(){
         this.inMemory = null;
+        this.listaDePedido=[];
         this.listaDeMesas = true;
         this.contadorDePedido = false;
         this.novoPedido = false;
         this.listaItens = false;
+        this.showListaPeidos = false;
       },
       novoContadorDePedido(){
         this.contadorDePedido = false;
         this.novoPedido = true;
+        this.showListaPeidos = false;
       },
       mostrarListaItens(data){
         this.getListaCategoria(data)
@@ -91,6 +108,16 @@ export default {
             }, err => {
               console.log(err);
             });
+      },
+      itemSelecionado(data){
+        this.listaDePedido.push(data);
+        this.detalhesItens = false;
+        this.showListaPeidos = true;       
+      },
+      removerListaPedidos(data){
+        console.log(this.listaDePedido);        
+        this.listaDePedido.splice(data,1);
+        console.log(this.listaDePedido);
       }
     },
   created() {
