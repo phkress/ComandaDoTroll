@@ -33,6 +33,7 @@
         @cancelaContadorDePedido='cancelaContadorDePedido'
         @novoContadorDePedido='novoContadorDePedido'
         @removerListaPedidos='removerListaPedidos'
+        @finalizaListaPedidos='finalizaListaPedidos'
         v-show="showListaPeidos"
       >        
       </lista-pedidos>
@@ -45,7 +46,9 @@ import ContadorDePedidos from '../shared/contadorDePedidos/ContadorDePedidos.vue
 import NovoPedido from '../shared/novoPedido/NovoPedido.vue';
 import ListaItens from '../shared/listaItens/ListaItens.vue';
 import DetalhesItens from '../shared/detalhesItens/DetalhesItens.vue';
-import LancheService from '../../domain/lanche/LancheService'
+import LancheService from '../../domain/lanche/LancheService';
+import PedidoService from '../../domain/pedido/PedidoService';
+import Pedido from '../../domain/pedido/Pedido';
 import ListaPedidos from '../shared/listaPedidos/ListaPedidos.vue';
 export default {
     name: "Mesa",
@@ -68,7 +71,7 @@ export default {
       showListaPeidos: false,
       inMemory: {mesa:{numeroDaMesa:0,pendentes:0,pedidos:0}},
       inMemoryIten:{},
-      listaDePedido:[]
+      listaDePedido: new Pedido()
     }),
     methods: {
       choseMesa(data) {
@@ -114,14 +117,25 @@ export default {
         this.detalhesItens = false;
         this.showListaPeidos = true;       
       },
-      removerListaPedidos(data){
-        console.log(this.listaDePedido);        
+      removerListaPedidos(data){      
         this.listaDePedido.splice(data,1);
-        console.log(this.listaDePedido);
+      },
+      finalizaListaPedidos(){
+        this.servicePedido
+        .cadastra(this.listaDePedido)
+        .then(() => {
+          //if(this.id) this.$router.push({ name: 'home' });
+          this.listaDePedido = new Pedido();
+         // this.$router.push({ name: 'home' });
+        }, err => {
+          // this.$router.push("login");
+          console.log(err)
+        });
       }
     },
   created() {
     this.serviceLanche = new LancheService(this.$resource);
+    this.servicePedido = new PedidoService(this.$resource);
   }
 }
 </script>
