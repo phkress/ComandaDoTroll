@@ -7,21 +7,21 @@
             :header-border-variant="cardColor"
             :header-bg-variant="cardColor">
             <b-row>
+              <b-col cols="12">
               <b-card-text>
-                <div class='listaDePedidos' v-for='i in 1'>
-                  1 - BATATA COM CHEDDAR
-                   <div class="addPedido">
-                      1 - DICIONAR BACON
-                   </div>
-                   <div class="removerPedido">
-                     1 - REMOVER QUEIJO
-                   </div>
+                <div class='listaDePedidos' v-for='iten in pedido.listaDePedidos'>
+                    {{iten.nome}}<br>
+                    {{iten.tipo}}
                    <hr>
                 </div>
 
               </b-card-text>
+            </b-col>
             </b-row>
-            <b-row><info></info></b-row>
+            <b-row><info
+              :mesa="pedido.mesa"
+              :codigo="pedido.codigo"
+            ></info></b-row>
         </b-card>
     </div>
 </template>
@@ -34,6 +34,9 @@ export default {
             required: true,
             type: String
         },
+        pedido:{
+          type:Object
+        }
     },
     components:{
         'info': SubInfo,
@@ -45,7 +48,6 @@ export default {
 }
 </script>
 <style scoped>
-
   .card-header{
     padding-top:0rem;
     padding-bottom:0rem;
@@ -53,6 +55,14 @@ export default {
   .card-body{
     padding-bottom:0.25rem;
     padding-top:0.25rem;
+  }
+  .listaDePedidos{
+    margin: 0px;
+    padding: 0px;
+  }
+  hr{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
   p{
     font-size: 12pt

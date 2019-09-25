@@ -121,7 +121,8 @@ export default {
         this.listaDePedido.splice(data,1);
       },
       finalizaListaPedidos(){
-        let pedido = new Pedido(this.listaDePedido, this.inMemory.mesa.numeroDaMesa, "cozinha");
+        let radom = Math.floor(Math.random() * 999)
+        let pedido = new Pedido(this.listaDePedido, this.inMemory.mesa.numeroDaMesa, "cozinha", radom);
         console.log(pedido);
         this.servicePedido
         .cadastra(pedido)

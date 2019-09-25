@@ -5,8 +5,9 @@
            <b-row>
                <b-col cols="12" class="mx-auto">
                     <b-card-group class="ml-2" deck>
-                        <cozinha-card v-for="index in 6" :key="index"
-                            cardTitle="Local de origem do Pedido"
+                        <cozinha-card v-for="(pedido, index) in listaPedidos" :key="index"
+                            cardTitle="Salão"
+                              :pedido='pedido'
                         ></cozinha-card>
                     </b-card-group>
                 </b-col>
@@ -17,6 +18,7 @@
 <script>
 import Titulo from '../shared/titulo/Titulo.vue';
 import Card from '../shared/card/Card.vue';
+import PedidoService from '../../domain/pedido/PedidoService';
 export default {
     name: "Cozinha",
     components: {
@@ -24,8 +26,21 @@ export default {
         'cozinha-card': Card,
     },
     data: () => ({
-
+      listaPedidos: [],
     }),
+    methods: {
+
+    },
+    created() {
+      this.servicePedido = new PedidoService(this.$resource);
+
+      this.servicePedido.lista()
+          .then(pedido => {
+            this.listaPedidos = pedido;
+          }, err => {
+            console.log(err);
+          });
+    }
 }
 </script>
 <style scoped>
