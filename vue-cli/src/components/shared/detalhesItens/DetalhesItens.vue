@@ -12,7 +12,7 @@
     </b-row>
     <div class="mediumSpace">
       <b-row>
-        <b-col cols="12" sm="6" lg="2" class="pb-2">
+        <b-col v-if="!itenEscolido.combo == ''" cols="12" sm="6" lg="2" class="pb-2">
           <p>Combo R$: {{itenEscolido.combo}}</p>
           <b-button variant="success" @click="pedir('combo', itenEscolido)">Pedir</b-button>
         </b-col>
@@ -42,7 +42,7 @@ export default {
       let itenSelecionado = {}
       itenSelecionado["nome"] = itenEscolido.nome;
       itenSelecionado["tipo"] =  tipo;
-      if(tipo=="combo"){        
+      if(tipo=="combo"){
         itenSelecionado["valor"] = itenEscolido.combo;
       }else{
         itenSelecionado["valor"] = itenEscolido.individual;

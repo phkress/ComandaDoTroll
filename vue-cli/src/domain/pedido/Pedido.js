@@ -1,7 +1,7 @@
 export default class Pedido {
-    constructor(listaDePedidos=[]) {
+    constructor(listaDePedidos=[], mesa="", status="") {
       this.listaDePedidos = listaDePedidos;
-      return this.listaDePedidos;
+      this.status = status;
+      this.mesa = mesa;
     }
   }
-  

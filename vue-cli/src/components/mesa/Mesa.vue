@@ -35,7 +35,7 @@
         @removerListaPedidos='removerListaPedidos'
         @finalizaListaPedidos='finalizaListaPedidos'
         v-show="showListaPeidos"
-      >        
+      >
       </lista-pedidos>
       </b-container>
   </div>
@@ -71,7 +71,7 @@ export default {
       showListaPeidos: false,
       inMemory: {mesa:{numeroDaMesa:0,pendentes:0,pedidos:0}},
       inMemoryIten:{},
-      listaDePedido: new Pedido()
+      listaDePedido: [],
     }),
     methods: {
       choseMesa(data) {
@@ -81,7 +81,7 @@ export default {
       },
       cancelaContadorDePedido(){
         this.inMemory = null;
-        this.listaDePedido=[];
+        this.listaDePedido= [];
         this.listaDeMesas = true;
         this.contadorDePedido = false;
         this.novoPedido = false;
@@ -115,18 +115,18 @@ export default {
       itemSelecionado(data){
         this.listaDePedido.push(data);
         this.detalhesItens = false;
-        this.showListaPeidos = true;       
+        this.showListaPeidos = true;
       },
-      removerListaPedidos(data){      
+      removerListaPedidos(data){
         this.listaDePedido.splice(data,1);
       },
       finalizaListaPedidos(){
+        let pedido = new Pedido(this.listaDePedido, this.inMemory.mesa.numeroDaMesa, "cozinha");
+        console.log(pedido);
         this.servicePedido
-        .cadastra(this.listaDePedido)
+        .cadastra(pedido)
         .then(() => {
-          //if(this.id) this.$router.push({ name: 'home' });
-          this.listaDePedido = new Pedido();
-         // this.$router.push({ name: 'home' });
+          this.cancelaContadorDePedido();
         }, err => {
           // this.$router.push("login");
           console.log(err)

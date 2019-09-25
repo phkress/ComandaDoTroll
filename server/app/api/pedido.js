@@ -13,8 +13,9 @@ module.exports = function(app){
       res.sendStatus(500);
     });
   },
-  api.adiciona = (req,res)=>{      
-    model.create({"listaDePedido": req.body})
+  api.adiciona = (req,res)=>{
+    console.log(req.body);
+    model.create(req.body)
       .then(function(pedido){
         res.json(pedido);
       }, err=>{
