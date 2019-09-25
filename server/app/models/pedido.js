@@ -9,6 +9,8 @@ const schema = mongoose.Schema({
       type:String
     },mesa:{
       type:String
+    },codigo:{
+      type:String
     }
 
 });
