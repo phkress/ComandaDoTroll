@@ -6,7 +6,7 @@ import Pedido from './components/pedido/Pedido.vue';
 import Configuracao from './components/configuracao/Configuracao.vue';
 export const routes = [
   {path: '*', name:'Cozinha', component: Cozinha, titulo: 'Cozinha', menu: false},
-  {path: '', name:'Cozinha', component: Cozinha, titulo: 'Cozinha', menu: false},  
+  //{path: '', name:'Cozinha', component: Cozinha, titulo: 'Cozinha', menu: false},  
   {path: '/cozinha', name:'Cozinha', component: Cozinha, titulo: 'Cozinha', menu: true},
   {path: '/boqueta', name:'Boqueta', component: Boqueta, titulo: 'Boqueta', menu: false},
   {path: '/mesa', name:'Mesa', component: Mesa, titulo: 'Mesa', menu: true},
