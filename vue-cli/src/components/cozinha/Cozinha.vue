@@ -9,6 +9,8 @@
                             v-show="pedido.status == 'cozinha'"
                             cardTitle="Salão"
                               :pedido='pedido'
+                              nextStatus='pronto'
+                              @reload='loadList'
                         ></cozinha-card>
                     </b-card-group>
                 </b-col>
@@ -30,30 +32,19 @@ export default {
       listaPedidos: [],
     }),
     methods: {
-
-    },
-    created() {
-      this.servicePedido = new PedidoService(this.$resource);
-
+      loadList(){
       this.servicePedido.lista()
           .then(pedido => {
             this.listaPedidos = pedido;
           }, err => {
             console.log(err);
-          });
-      this.servicePedido.contadorMesa('2')
-          .then(pedido => {
-           console.log(pedido);
-          }, err => {
-            console.log(err);
-          });
-      this.servicePedido.contadorMesaStatus('2','cozinha')
-          .then(pedido => {
-           console.log(pedido);
-          }, err => {
-            console.log(err);
-          });
-      
+          }); 
+
+      }
+    },
+    created() {
+      this.servicePedido = new PedidoService(this.$resource);
+      setInterval(() => this.loadList(), 1 * 2000);
     }
 }
 </script>
