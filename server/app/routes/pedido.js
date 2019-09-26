@@ -10,7 +10,9 @@ module.exports = function(app) {
 		.put(api.atualiza);
 		// .get(api.buscaPorId)
 		// .delete(api.removePorId)
-
+	app.route('/v1/pedido/mesa/:mesa')
+		.get(api.mesa);
+		
 	app.route('/v1/pedido/contador/:mesa')
 		.get(api.contadorMesa);
 		

@@ -1,6 +1,7 @@
 export default class PedidoService {
     constructor(resource){
       this._resource = resource('v1/pedido{/id}');
+      this._resourceMesa = resource('v1/pedido/mesa{/mesa}');
       this._resourceContadorMesa = resource('v1/pedido/contador{/mesa}');
       this._resourceContadorMesaStatus = resource('v1/pedido/contador{/mesa}{/status}');
     }
@@ -44,6 +45,11 @@ export default class PedidoService {
     contadorMesaStatus(mesa, status) {
       return this._resourceContadorMesaStatus
           .get( {mesa,status} )
+          .then(res => res.json());
+    }
+    mesaLista(mesa) {
+      return this._resourceMesa
+          .get( {mesa} )
           .then(res => res.json());
     }
   }

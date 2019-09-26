@@ -51,6 +51,16 @@ module.exports = function(app){
 			console.log(error);
 			res.sendStatus(500);
 		})
-	};
+  };
+  api.mesa = (req, res)=>{
+    model.find({
+      mesa: req.params.mesa
+    }).then(function(pedido){
+      res.json(pedido)
+    }, function(error){
+      console.log(error);
+      res.sendStatus(500);
+    });
+  }  
   return api;
 }
