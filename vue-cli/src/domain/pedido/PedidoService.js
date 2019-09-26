@@ -52,4 +52,12 @@ export default class PedidoService {
           .get( {mesa} )
           .then(res => res.json());
     }
+    mesaApagar(mesa){
+      return this._resourceMesa
+          .delete({mesa})
+          .then(null,err =>{
+            console.log(err);
+            throw new Error("Não foi possível excluir o Mesa")
+          })
+    }
   }

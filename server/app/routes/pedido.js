@@ -11,7 +11,8 @@ module.exports = function(app) {
 		// .get(api.buscaPorId)
 		// .delete(api.removePorId)
 	app.route('/v1/pedido/mesa/:mesa')
-		.get(api.mesa);
+		.get(api.mesa)
+		.delete(api.removePorMesa);
 		
 	app.route('/v1/pedido/contador/:mesa')
 		.get(api.contadorMesa);

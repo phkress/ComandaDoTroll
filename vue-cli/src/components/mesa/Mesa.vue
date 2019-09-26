@@ -10,6 +10,7 @@
           :infoDaMesa='inMemory'
           @cancelaContadorDePedido='cancelaContadorDePedido'
           @novoContadorDePedido='novoContadorDePedido'
+          @fecharMesa='fecharMesa'
           v-if="contadorDePedido"
         ></contador-de-pedidos>
       <novo-pedido
@@ -37,12 +38,20 @@
         v-if="showListaPeidos"
       >
       </lista-pedidos>
+      <fechamento
+        :infoDaMesa='inMemory'   
+        :listaDosPedidos='aFinalizar'
+        @cancelaContadorDePedido='cancelaContadorDePedido'
+        @fecharConta='fecharConta'
+        v-if='showFechamento'
+      ></fechamento>
       </b-container>
   </div>
 </template>
 <script>
 import ListaMesas from '../shared/listaMesas/ListaMesas.vue';
 import ContadorDePedidos from '../shared/contadorDePedidos/ContadorDePedidos.vue';
+import Fechamento from '../shared/fechamento/Fechamento.vue';
 import NovoPedido from '../shared/novoPedido/NovoPedido.vue';
 import ListaItens from '../shared/listaItens/ListaItens.vue';
 import DetalhesItens from '../shared/detalhesItens/DetalhesItens.vue';
@@ -58,7 +67,8 @@ export default {
       "novo-pedido" : NovoPedido,
       "lista-itens": ListaItens,
       "detalhes-itens": DetalhesItens,
-      "lista-pedidos": ListaPedidos
+      "lista-pedidos": ListaPedidos,
+      "fechamento":Fechamento
     },
     data: () => ({
       mesas: [{numeroDaMesa:1,pendentes:0,pedidos:1},{numeroDaMesa:2,pendentes:2,pedidos:2},{numeroDaMesa:3,pendentes:1,pedidos:1}],
@@ -69,9 +79,11 @@ export default {
       listaItens: false,
       detalhesItens: false,
       showListaPeidos: false,
+      showFechamento: false,
       inMemory: {mesa:{numeroDaMesa:0,pendentes:0,pedidos:0,preparando:0}},
       inMemoryIten:{},
       listaDePedido: [],
+      aFinalizar:[]
     }),
     methods: {
       choseMesa(data) {
@@ -87,6 +99,7 @@ export default {
         this.novoPedido = false;
         this.listaItens = false;
         this.showListaPeidos = false;
+        this.showFechamento = false;
       },
       novoContadorDePedido(){
         this.contadorDePedido = false;
@@ -129,6 +142,28 @@ export default {
           this.cancelaContadorDePedido();
         }, err => {
           // this.$router.push("login");
+          console.log(err)
+        });
+      },
+      fecharMesa(data){
+        this.contadorDePedido = false;           
+        this.servicePedido
+        .mesaLista(data)
+        .then(pedidoAFinalizar => {
+          this.aFinalizar = pedidoAFinalizar;
+          this.showFechamento = true;
+         // console.log(pedidoAFinalizar);          
+        }, err => {
+          // this.$router.push("login");
+          console.log(err)
+        });
+      },
+      fecharConta(data){
+        this.servicePedido
+        .mesaApagar(data)
+        .then(() => { 
+          this.cancelaContadorDePedido();         
+        }, err => {
           console.log(err)
         });
       }

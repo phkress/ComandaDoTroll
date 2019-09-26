@@ -62,5 +62,17 @@ module.exports = function(app){
       res.sendStatus(500);
     });
   }  
+  
+	api.removePorMesa = function(req, res) {
+    console.log(req.params)
+		model.remove({'mesa' : req.params.mesa})
+		.then(function() {
+			res.sendStatus(200);
+		}, function(error) {
+			console.log(error);
+			res.sendStatus(500);
+		});
+
+	};
   return api;
 }

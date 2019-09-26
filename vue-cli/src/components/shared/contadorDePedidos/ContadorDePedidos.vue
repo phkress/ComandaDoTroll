@@ -16,11 +16,14 @@
     </b-row>
     <div class="mediumSpace">
       <b-row>
-        <b-col cols="12" sm="6" offset-lg="4" lg="2" class="pb-2">
+        <b-col cols="12" sm="4" offset-lg="3" lg="2" class="pb-2">
           <b-button size="lg" variant="danger" @click="cancelar()">Cancelar</b-button>
         </b-col>
-        <b-col cols="12" sm="6" lg="2" class="pb-2">
+        <b-col cols="12" sm="4" lg="2" class="pb-2">
           <b-button size="lg" variant="primary" @click="novo()">Novo</b-button>
+        </b-col>
+        <b-col cols="12" sm="4" lg="2" class="pb-2">
+          <b-button size="lg" variant="success" @click="fechar()">Fechar Mesa</b-button>
         </b-col>
       </b-row>
     </div>
@@ -43,6 +46,9 @@ export default {
     },
     novo(){
       this.$emit('novoContadorDePedido')
+    },
+    fechar(){
+      this.$emit('fecharMesa', this.$props.infoDaMesa.mesa.numeroDaMesa)
     }
     
   },
@@ -62,7 +68,7 @@ export default {
             console.log(err);
           });
       this.servicePedido.contadorMesaStatus(this.infoDaMesa.mesa.numeroDaMesa,'cozinha')
-          .then(preparando => {
+          .then(preparando => {            
             this.$props.infoDaMesa.mesa.preparando = preparando;
           }, err => {
             console.log(err);
