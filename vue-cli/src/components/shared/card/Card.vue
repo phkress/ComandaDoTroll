@@ -5,7 +5,9 @@
             header-text-variant="white"
             :border-variant="cardColor"
             :header-border-variant="cardColor"
-            :header-bg-variant="cardColor">
+            :header-bg-variant="cardColor"
+            @dblclick="pronto()"            
+            >
             <b-row>
               <b-col cols="12">
               <b-card-text>
@@ -26,6 +28,7 @@
     </div>
 </template>
 <script>
+import PedidoService from '../../../domain/pedido/PedidoService';
 import SubInfo from '../subInfo/SubInfo.vue';
 export default {
     name: "Card",
@@ -36,6 +39,9 @@ export default {
         },
         pedido:{
           type:Object
+        },
+        nextStatus:{
+          type:String
         }
     },
     components:{
@@ -45,6 +51,22 @@ export default {
         cardTitleColor: 'success',
         cardColor: 'dark'
     }),
+    methods:{
+      pronto(){
+        this.pedido.status=this.$props.nextStatus;
+        this.servicePedido
+        .cadastra(this.pedido)
+        .then(() => {
+           this.$emit('reload')
+        }, err => {
+          console.log(err)
+        });
+        
+      }
+    },
+    created() {
+      this.servicePedido = new PedidoService(this.$resource);
+    }
 }
 </script>
 <style scoped>

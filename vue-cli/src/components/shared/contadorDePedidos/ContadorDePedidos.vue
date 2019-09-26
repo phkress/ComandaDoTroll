@@ -6,6 +6,8 @@
           <h1>Mesa : {{infoDaMesa.mesa.numeroDaMesa}}</h1>
       </div>
       <div class="bigSpace">        
+        <h4>Preparando:{{infoDaMesa.mesa.preparando}}</h4>
+        <br>
         <h4>Pendentes:{{infoDaMesa.mesa.pendentes}}</h4>
         <br>        
         <h3>Pedidos: {{infoDaMesa.mesa.pedidos}}</h3>
@@ -53,9 +55,15 @@ export default {
           }, err => {
             console.log(err);
           });
-      this.servicePedido.contadorMesaStatus(this.infoDaMesa.mesa.numeroDaMesa,'cozinha')
+      this.servicePedido.contadorMesaStatus(this.infoDaMesa.mesa.numeroDaMesa,'pronto')
           .then(pendentes => {
             this.$props.infoDaMesa.mesa.pendentes = pendentes
+          }, err => {
+            console.log(err);
+          });
+      this.servicePedido.contadorMesaStatus(this.infoDaMesa.mesa.numeroDaMesa,'cozinha')
+          .then(preparando => {
+            this.$props.infoDaMesa.mesa.preparando = preparando;
           }, err => {
             console.log(err);
           });

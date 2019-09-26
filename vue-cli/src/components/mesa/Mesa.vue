@@ -69,7 +69,7 @@ export default {
       listaItens: false,
       detalhesItens: false,
       showListaPeidos: false,
-      inMemory: {mesa:{numeroDaMesa:0,pendentes:0,pedidos:0}},
+      inMemory: {mesa:{numeroDaMesa:0,pendentes:0,pedidos:0,preparando:0}},
       inMemoryIten:{},
       listaDePedido: [],
     }),
@@ -123,7 +123,6 @@ export default {
       finalizaListaPedidos(){
         let radom = Math.floor(Math.random() * 999)
         let pedido = new Pedido(this.listaDePedido, this.inMemory.mesa.numeroDaMesa, "cozinha", radom);
-        console.log(pedido);
         this.servicePedido
         .cadastra(pedido)
         .then(() => {

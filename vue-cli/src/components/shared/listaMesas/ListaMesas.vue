@@ -7,7 +7,7 @@
                  Mesa: {{mesa.numeroDaMesa}}
                </span>
                <span class="float-right">
-                 Pendentes: {{mesa.pendentes}} - Pedidos: {{mesa.pedidos}}
+                 <!-- Preparando: {{}} Pendentes: {{mesa.pendentes}} - Pedidos: {{mesa.pedidos}} -->
                </span>
          </div>
      </b-col>
