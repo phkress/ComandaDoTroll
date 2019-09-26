@@ -13,11 +13,11 @@ export default class PedidoService {
       });
     }
     cadastra(pedido) {
+      console.log(pedido)
       if(pedido._id) {
-
+        console.log('update')
           return this._resource
               .update({ id: pedido._id}, pedido);
-
       } else {
           return this._resource
               .save(pedido);
