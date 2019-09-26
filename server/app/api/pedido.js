@@ -14,7 +14,6 @@ module.exports = function(app){
     });
   },
   api.adiciona = (req,res)=>{
-    console.log(req.body);
     model.create(req.body)
       .then(function(pedido){
         res.json(pedido);
@@ -24,7 +23,6 @@ module.exports = function(app){
       });
   }
   api.contadorMesa = (req, res)=>{
-    console.log(req.params)
     model.find({
       mesa: req.params.mesa
     }).then(function(pedido){
@@ -35,7 +33,6 @@ module.exports = function(app){
     });
   }
   api.contadorMesaStatus = (req, res)=>{
-    console.log(req.params)
     model.find({
       mesa: req.params.mesa,
       status: req.params.status
@@ -46,5 +43,14 @@ module.exports = function(app){
       res.sendStatus(500);
     });
   }
+  api.atualiza = function(req, res) {
+		model.findByIdAndUpdate(req.params.id, req.body)
+		.then(function(pedido) {
+			res.json(pedido);
+		}, function(error) {
+			console.log(error);
+			res.sendStatus(500);
+		})
+	};
   return api;
 }
