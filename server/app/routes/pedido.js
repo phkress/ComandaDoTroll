@@ -10,5 +10,8 @@ module.exports = function(app) {
 		// .get(api.buscaPorId)
 		// .delete(api.removePorId)
 		// .put(api.atualiza);
-	
+	app.route('/v1/pedido/contador/:mesa')
+		.get(api.contadorMesa)
+	app.route('/v1/pedido/contador/:mesa/:status')
+	.get(api.contadorMesaStatus)
 };

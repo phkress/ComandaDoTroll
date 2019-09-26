@@ -23,5 +23,28 @@ module.exports = function(app){
         res.sendStatus(500);
       });
   }
+  api.contadorMesa = (req, res)=>{
+    console.log(req.params)
+    model.find({
+      mesa: req.params.mesa
+    }).then(function(pedido){
+      res.json(pedido.length)
+    }, function(error){
+      console.log(error);
+      res.sendStatus(500);
+    });
+  }
+  api.contadorMesaStatus = (req, res)=>{
+    console.log(req.params)
+    model.find({
+      mesa: req.params.mesa,
+      status: req.params.status
+    }).then(function(pedido){
+      res.json(pedido.length)
+    }, function(error){
+      console.log(error);
+      res.sendStatus(500);
+    });
+  }
   return api;
 }

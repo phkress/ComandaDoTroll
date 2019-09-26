@@ -4,28 +4,28 @@
         <lista-mesas
           :lmesas='mesas'
           @mesaSelecionada="choseMesa"
-          v-show="listaDeMesas"
+          v-if="listaDeMesas"
         ></lista-mesas>
         <contador-de-pedidos
           :infoDaMesa='inMemory'
           @cancelaContadorDePedido='cancelaContadorDePedido'
           @novoContadorDePedido='novoContadorDePedido'
-          v-show="contadorDePedido"
+          v-if="contadorDePedido"
         ></contador-de-pedidos>
       <novo-pedido
-        v-show="novoPedido"
+        v-if="novoPedido"
         @cancelaNovoPedido='cancelaContadorDePedido'
         @showListaItens='mostrarListaItens'
       ></novo-pedido>
       <lista-itens
         :itens="itens"
         @itenSelecionado='itenSelecionado'
-        v-show="listaItens"
+        v-if="listaItens"
       ></lista-itens>
       <detalhes-itens
         :itenEscolido="inMemoryIten"
         @iEscolido="itemSelecionado"
-        v-show="detalhesItens"
+        v-if="detalhesItens"
       ></detalhes-itens>
       <lista-pedidos
         :infoDaMesa='inMemory'
@@ -34,7 +34,7 @@
         @novoContadorDePedido='novoContadorDePedido'
         @removerListaPedidos='removerListaPedidos'
         @finalizaListaPedidos='finalizaListaPedidos'
-        v-show="showListaPeidos"
+        v-if="showListaPeidos"
       >
       </lista-pedidos>
       </b-container>

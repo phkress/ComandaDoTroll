@@ -6,6 +6,7 @@
                <b-col cols="12" class="mx-auto">
                     <b-card-group class="ml-2" deck>
                         <cozinha-card v-for="(pedido, index) in listaPedidos" :key="index"
+                            v-show="pedido.status == 'cozinha'"
                             cardTitle="Salão"
                               :pedido='pedido'
                         ></cozinha-card>
@@ -40,6 +41,19 @@ export default {
           }, err => {
             console.log(err);
           });
+      this.servicePedido.contadorMesa('2')
+          .then(pedido => {
+           console.log(pedido);
+          }, err => {
+            console.log(err);
+          });
+      this.servicePedido.contadorMesaStatus('2','cozinha')
+          .then(pedido => {
+           console.log(pedido);
+          }, err => {
+            console.log(err);
+          });
+      
     }
 }
 </script>

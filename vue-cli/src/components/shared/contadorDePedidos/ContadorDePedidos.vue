@@ -5,10 +5,10 @@
       <div class="mt-2">
           <h1>Mesa : {{infoDaMesa.mesa.numeroDaMesa}}</h1>
       </div>
-      <div class="bigSpace">
-        <h3>Pedidos: {{infoDaMesa.mesa.pedidos}}</h3>
-        <br>
+      <div class="bigSpace">        
         <h4>Pendentes:{{infoDaMesa.mesa.pendentes}}</h4>
+        <br>        
+        <h3>Pedidos: {{infoDaMesa.mesa.pedidos}}</h3>
       </div>
      </b-col>
     </b-row>
@@ -25,6 +25,7 @@
   </div>
 </template>
 <script>
+import PedidoService from '../../../domain/pedido/PedidoService';
 export default {
   name: "ContadorDePedido",
   props:{
@@ -41,7 +42,25 @@ export default {
     novo(){
       this.$emit('novoContadorDePedido')
     }
-  }
+    
+  },
+    created() {
+      this.servicePedido = new PedidoService(this.$resource);
+
+      this.servicePedido.contadorMesa(this.$props.infoDaMesa.mesa.numeroDaMesa)
+          .then(pedido => {
+            this.$props.infoDaMesa.mesa.pedidos = pedido
+          }, err => {
+            console.log(err);
+          });
+      this.servicePedido.contadorMesaStatus(this.infoDaMesa.mesa.numeroDaMesa,'cozinha')
+          .then(pendentes => {
+            this.$props.infoDaMesa.mesa.pendentes = pendentes
+          }, err => {
+            console.log(err);
+          });
+      
+    }
 }
 </script>
 <style lang="scss" scoped>
