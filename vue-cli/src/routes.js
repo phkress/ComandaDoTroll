@@ -10,6 +10,6 @@ export const routes = [
   {path: '/cozinha', name:'Cozinha', component: Cozinha, titulo: 'Cozinha', menu: true},
   {path: '/boqueta', name:'Boqueta', component: Boqueta, titulo: 'Boqueta', menu: false},
   {path: '/mesa', name:'Mesa', component: Mesa, titulo: 'Mesa', menu: true},
-  {path: '/pedido', name:'Pedido', component: Pedido, titulo: 'Pedido', menu: false},
+  {path: '/pedido', name:'Pedido', component: Pedido, titulo: 'Pedido', menu: true},
   {path: '/configuracao', name:'Configuração', component: Configuracao, titulo: 'Configuração', menu: false},
 ];

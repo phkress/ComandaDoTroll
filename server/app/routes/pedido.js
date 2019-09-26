@@ -6,12 +6,14 @@ module.exports = function(app) {
 		.get(api.lista)
 		.post(api.adiciona);
 
-	//app.route('/v1/pedido/:id')
+	app.route('/v1/pedido/:id')
+		.put(api.atualiza);
 		// .get(api.buscaPorId)
 		// .delete(api.removePorId)
-		// .put(api.atualiza);
+
 	app.route('/v1/pedido/contador/:mesa')
-		.get(api.contadorMesa)
+		.get(api.contadorMesa);
+		
 	app.route('/v1/pedido/contador/:mesa/:status')
-	.get(api.contadorMesaStatus)
+	.get(api.contadorMesaStatus);
 };
