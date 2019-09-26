@@ -44,6 +44,7 @@ export default {
     },
     created() {
       this.servicePedido = new PedidoService(this.$resource);
+      this.loadList()
       setInterval(() => this.loadList(), 1 * 2000);
     }
 }
