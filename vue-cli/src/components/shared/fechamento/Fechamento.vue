@@ -20,7 +20,8 @@
      </b-col>
     </b-row>
     <div class="mediumSpace">
-        <h3>Total:{{total}}</h3>
+        <h3>Total:{{total}}</h3> 
+        <p>Total com 10%:{{totalComGorgeta}}</p>
     </div>
     <div class="mediumSpace">
       <b-row>
@@ -48,7 +49,8 @@ export default {
   },
   data: () => ({
       listaDosPedidoVar:[],
-      total:0
+      total:0,
+      totalComGorgeta:0
   }),
   methods: {
     cancelar() {
@@ -67,8 +69,10 @@ export default {
                 let valor = parseInt(item);
                 calculoTotal += valor                
             }            
-        }        
+        }
+        let gorgeta = calculoTotal+(calculoTotal/10);        
         this.total = calculoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        this.totalComGorgeta = gorgeta.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }    
   },
     created() {
